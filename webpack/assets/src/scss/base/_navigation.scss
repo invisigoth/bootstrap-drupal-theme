@@ -1,0 +1,136 @@
+#navbar-main {
+  padding: 0;
+}
+
+#block-mainnavigation {
+  .nav-link {
+    font-weight: 600;
+    line-height: 1.4;
+    padding: $spacer 0;
+    position: relative;
+
+    &::before {
+      background-color: var(--bs-secondary);
+      border-radius: 10px;
+      bottom: 0;
+      content: '';
+      display: block;
+      height: 0;
+      left: 0;
+      position: absolute;
+      transition: all 0.2s ease;
+      width: 100%;
+    }
+
+    &.is-active,
+    &:focus,
+    &:hover {
+      &::before {
+        height: 4px;
+      }
+    }
+
+    &:focus,
+    &:hover {
+      &::before {
+        background-color: rgba($secondary, .5);
+      }
+    }
+  }
+
+  .active .nav-link::before {
+    height: 4px;
+  }
+
+  @include media-breakpoint-down(md) {
+    .nav-item {
+      border-bottom: 1px solid rgba($white, .15);
+      padding: ($spacer * 2) 0 0;
+    }
+
+    .nav-link {
+      color: var(--bs-white);
+      display: inline-block;
+    }
+
+  }
+
+  @include media-breakpoint-up(md) {
+    width: 100% !important;
+
+    .nav {
+      position: relative;
+      width: calc(100% + #{$spacer});
+
+      > .nav-item {
+        margin-right: 20px;
+
+        > .nav-link,
+        > .dropdown-toggler {
+          font-size: $font-size-base * 1.125;
+          padding: 20px 10px 20px ($spacer .5);
+          position: relative;
+
+          &.main-link {
+            font-size: $font-size-base * 1.125;
+            font-weight: bold;
+          }
+        }
+
+        > .dropdown-toggler {
+          padding-left: 0;
+          padding-right: 0;
+        }
+      }
+
+      .dropdown {
+        display: flex;
+        position: static;
+      }
+
+      .dropdown-toggler {
+        align-items: center;
+        display: flex;
+      }
+
+      .dropdown-toggler,
+      .dropdown-closer {
+        background: transparent;
+        border: none;
+      }
+
+      .nav-link {
+        font-size: $font-size-base * 1.125;
+        padding: 20px ($spacer .5);
+      }
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    .nav {
+      .nav-item {
+        .nav-link {
+          font-size: $font-size-base;
+        }
+      }
+    }
+  }
+
+  @include media-breakpoint-up(xl) {
+    padding-right: 0;
+
+    .nav {
+      width: auto;
+
+      .nav-item {
+        &:last-child {
+          margin-right: 0;
+        }
+
+        .nav-link {
+          font-size: $font-size-base * 1.125;
+        }
+      }
+    }
+  }
+}

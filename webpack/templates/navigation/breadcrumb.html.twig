@@ -1,0 +1,40 @@
+{#
+/**
+ * @file
+ * Theme override for a breadcrumb trail.
+ *
+ * Available variables:
+ * - breadcrumb: Breadcrumb trail items.
+ */
+#}
+{{ attach_library('bootstrap_barrio/breadcrumb') }}
+
+{% if breadcrumb %}
+	<nav role="navigation" aria-label="breadcrumb">
+		<ol class="breadcrumb">
+			{% for item in breadcrumb %}
+				{% if item.url %}
+					<li class="breadcrumb-item">
+						{% if loop.first %}
+							{{ source('@iconagency/../assets/images/home.svg') }}
+						{% else %}
+							{{ source('@iconagency/../assets/images/arrow-right-light.svg') }}
+						{% endif %}
+
+						<a href="{{ item.url }}">
+							{{ item.text }}
+						</a>
+					</li>
+				{% else %}
+					<li class="breadcrumb-item active">
+						{% if not loop.first %}
+							{{ source('@iconagency/../assets/images/arrow-right-light.svg') }}
+						{% endif %}
+
+						{{ item.text }}
+					</li>
+				{% endif %}
+			{% endfor %}
+		</ol>
+	</nav>
+{% endif %}

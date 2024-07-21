@@ -1,0 +1,11 @@
+.paragraph--type-section {
+  .container {
+    border-top-right-radius: $curve-size-lg;
+  }
+
+  @include media-breakpoint-up(md) {
+    .container {
+      border-radius: $curve-size-md;
+    }
+  }
+}

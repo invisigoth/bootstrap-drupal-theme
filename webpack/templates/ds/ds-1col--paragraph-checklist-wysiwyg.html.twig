@@ -1,0 +1,20 @@
+{#
+/**
+ * @file
+ * Display Suite 1 column template.
+ *
+ * Available variables:
+ * - ds_content_wrapper: wrapper around content
+ * - attributes: content region attributes
+ * - ds_content: content region
+ */
+#}
+{%
+set classes = [
+  'ds-1col',
+  paragraph.field_negative_item.value ? 'checklist-cross',
+]
+%}
+<{{ds_content_wrapper}}{{attributes.addClass(classes)}}>
+	<div class="content">{{ ds_content }}</div>
+</{{ds_content_wrapper}}>

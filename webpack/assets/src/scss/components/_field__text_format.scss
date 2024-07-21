@@ -1,0 +1,33 @@
+.text-formatted {
+  .btn {
+    margin-right: $spacer;
+  }
+
+  a {
+    @extend %link;
+    font-size: $font-size-base;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+
+    li {
+      margin-bottom: $spacer * .5;
+      position: relative;
+
+      &:before {
+        content: '•';
+        display: inline-block;
+        left: -$spacer;
+        position: absolute;
+      }
+    }
+  }
+
+  @include media-breakpoint-up(md) {
+    .btn-container {
+      text-align: left;
+    }
+  }
+}

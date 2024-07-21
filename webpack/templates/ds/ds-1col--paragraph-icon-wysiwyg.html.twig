@@ -1,0 +1,18 @@
+{% set classes = [
+  'ds-1col',
+] %}
+
+<{{ds_content_wrapper}}{{attributes.addClass(classes)}}>
+
+	<div class="icon-wrapper d-flex align-items-md-center">
+		{{ ds_content.field_icon }}
+
+		{{ ds_content.field_title }}
+	</div>
+
+	<div class="content">
+		{{ ds_content|without('field_title', 'field_icon') }}
+	</div>
+
+
+</{{ds_content_wrapper}}>

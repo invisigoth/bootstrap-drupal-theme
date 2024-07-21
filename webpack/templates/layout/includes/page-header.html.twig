@@ -1,0 +1,48 @@
+{% set nav_id = 'collasping-nav' %}
+
+<header id="header" class="header" role="banner" aria-label="{{ 'Site header'|t}}">
+  {% block head %}
+
+    <div class="row mx-0 align-items-center">
+      <div class="col-auto px-0">
+        {{ page.header }}
+      </div>
+
+      <div class="col-12 col-sm-auto flex-grow-1 ms-auto pe-0 d-flex flex-column flex-lg-row">
+        <nav{{navbar_attributes.addClass(['flex-grow-1'])}}>
+          {% if page.primary_menu %}
+            <div class="{{ navbar_collapse_class }}" id="{{ nav_id }}">
+              <div class="offcanvas-header justify-content-end pb-0 pe-4a">
+                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="{{ navbar_collapse_btn_data }}" data-bs-target="#{{ nav_id }}" aria-controls="{{ nav_id }}" aria-expanded="false">
+                  <span class="burger-menu">
+                    <span class="burger-line first"></span>
+                    <span class="burger-line middle"></span>
+                    <span class="burger-line last"></span>
+                  </span>
+                  <span class="btn-text">{{ 'Close'|t }}</span>
+                </button>
+              </div>
+              <div class="offcanvas-body justify-content-end">
+                <div class="offcanvas-body-inner">
+                  {{ page.primary_menu }}
+                </div>
+              </div>
+
+            </div>
+          {% endif %}
+        </nav>
+        <div class="d-flex d-lg-none justify-content-sm-end px-0">
+          <button class="navbar-toggler collapsed" id="mobile-nav-toggle" type="button" data-bs-toggle="{{ navbar_collapse_btn_data }}" data-bs-target="#{{ nav_id }}" aria-controls="{{ nav_id }}" aria-expanded="false">
+            <span class="burger-menu">
+              <span class="burger-line first"></span>
+              <span class="burger-line middle"></span>
+              <span class="burger-line last"></span>
+            </span>
+
+            <span class="btn-text">{{ 'Menu'|t }}</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  {% endblock %}
+</header>

@@ -1,0 +1,211 @@
+<?php
+
+/**
+ * @file
+ * IconAgency theme.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\node\NodeInterface;
+
+/**
+ * Implements hook_library_info_alter().
+ *
+ * Create a new dev libraries based off iconagency/global for dev and hot.
+ */
+function iconagency_library_info_alter(&$libraries, $extension): void {
+  if ($extension !== 'iconagency') {
+    return;
+  }
+
+  $theme = \Drupal::service('extension.path.resolver')->getPath('theme', 'iconagency');
+  $port = @file_get_contents($theme . '/assets/.webpack-dev-port') ?: '8080';
+
+  // Add a cache buster.
+  $libraries['global']['version'] .= '-' . \Drupal::state()->get('system.css_js_query_string');
+
+  // Utility functions for altering the array keys.
+  $devpath = fn($path) => preg_replace('#^assets/dist#', 'assets/dev', $path);
+  $hotpath = fn($path) => stristr($path, '://') ? $path : 'http://localhost:' . $port . '/' . $theme . '/' . $devpath($path);
+
+  // Create new libraries.
+  $libraries['global-dev'] = $libraries['global-hot'] = $libraries['global'];
+
+  $js = $libraries['global']['js'];
+  $libraries['global-dev']['js'] = array_combine(array_map($devpath, array_keys($js)), $js);
+  $libraries['global-hot']['js'] = array_combine(array_map($hotpath, array_keys($js)), $js);
+
+  $css = $libraries['global']['css']['theme'];
+  $libraries['global-dev']['css']['theme'] = array_combine(array_map($devpath, array_keys($css)), $css);
+  $libraries['global-hot']['css']['theme'] = array_combine(array_map($hotpath, array_keys($css)), $css);
+}
+
+/**
+ * Implements hook_page_attachments_alter().
+ *
+ * Switch between hot, dev and dist libraries dynamically.
+ */
+function iconagency_page_attachments_alter(&$variables): void {
+  $theme = \Drupal::service('extension.path.resolver')->getPath('theme', 'iconagency');
+  $dev = file_exists($theme . '/assets/dev/css/app.css');
+  $hot = file_exists($theme . '/assets/.webpack-dev-port');
+
+  $variables['#attached']['library'][] = $hot ? 'iconagency/global-hot' : ($dev ? 'iconagency/global-dev' : 'iconagency/global');
+}
+
+/**
+ * Implements hook_preprocess_page().
+ */
+function iconagency_preprocess_page(&$variables) {
+  $variables['full_width'] = !empty($variables['node']);
+}
+
+/**
+ * Implements hook_preprocess_page_title().
+ */
+function iconagency_preprocess_page_title(&$variables) {
+  $node = \Drupal::routeMatch()->getParameter('node');
+  $current_path = \Drupal::service('path.current')->getPath();
+  $path_alias = \Drupal::service('path_alias.manager')->getAliasByPath($current_path);
+
+  if ($node instanceof NodeInterface) {
+    if ($node->hasField('field_banner_title') && !$node->get('field_banner_title')->isEmpty()) {
+      $variables['title'] = $node->field_banner_title->value;
+    }
+    else {
+      $variables['title'] = $node->getTitle();
+    }
+  }
+
+  switch ($path_alias) {
+    case '/request-translation/thank-you':
+      $variables['title'] = t('Request a translation');
+      break;
+
+    case '/contact-us/thank-you':
+      $variables['title'] = t('Contact us');
+      break;
+  }
+}
+
+/**
+ * Implements hook_preprocess_block().
+ */
+function iconagency_preprocess_block(&$variables) {
+  if ($variables['base_plugin_id'] == 'page_title_block') {
+    $variables['#cache']['contexts'][0] = 'url.path';
+  }
+}
+
+/**
+ * Implements hook_preprocess_ds_1col().
+ */
+function iconagency_preprocess_ds_1col(&$variables) {
+
+  if (
+    $variables['content']['#entity_type'] == 'node' &&
+    $variables['content']['#view_mode'] == 'banner' &&
+    $variables['content']['#node']->hasField('field_feature_banner') &&
+    !$variables['content']['#node']->get('field_feature_banner')->isEmpty() &&
+    $variables['content']['#node']->field_feature_banner->value
+  ) {
+    $variables['content']['ds_content']['banner_image_desk'] = $variables['content']['ds_content']['field_banner_image'];
+  }
+
+  if (
+    $variables['content']['#entity_type'] == 'paragraph' &&
+    $variables['content']['#bundle'] == 'testimonial'
+  ) {
+    // Add quotes to title.
+    $title = $variables['content']['ds_content']['field_title'][0]['#context']['value'];
+    $variables['content']['ds_content']['field_title'][0]['#context']['value'] = "“{$title}”";
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function iconagency_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if (!empty($form['#webform_id']) && $form['#webform_id'] == 'request_a_translation') {
+
+    // Set Short ID.
+    if (empty($form['elements']['short_id']['#default_value'])) {
+      $entity = $form_state->getFormObject()->getEntity();
+      $uuid = $entity->uuid->value;
+      $short_id = substr($uuid, -8);
+
+      $form['elements']['short_id']['#default_value'] = $short_id;
+    }
+
+    if (
+      !empty($form['progress']['#current_page']) &&
+      $form['progress']['#current_page'] == 'review_for_submission'
+    ) {
+      $values = $form_state->getValues();
+      $page_keys = [
+        'organisation_details',
+        'contact_details',
+        'translation_request',
+      ];
+
+      unset($values['submit']);
+
+      foreach ($form['elements'] as $page_key => $page) {
+        if (in_array($page_key, $page_keys)) {
+          $form['elements']['review_for_submission']['summary'][$page_key] = [
+            '#type' => 'container',
+            '#attributes' => [
+              'class' => ['mb-5']
+            ],
+            'page_title' => [
+              '#type' => 'inline_template',
+              '#template' => '<h3>{{ title }}</h3>',
+              '#context' => [
+                'title' => $page['#title'],
+              ],
+            ],
+          ];
+
+          foreach ($page as $key => $field) {
+            if (substr($key, 0, 1) != '#' && !empty($values[$key])) {
+              $value = $values[$key];
+
+              if (is_array($value)) {
+                $value = array_filter($value, function($val){
+                  return !is_null($val) && $val !== '';
+                });
+
+                $value = implode(', ', $value);
+              }
+
+              $form['elements']['review_for_submission']['summary'][$page_key][$key] = [
+                '#type' => 'container',
+                '#attributes' => [
+                  'class' => ['field']
+                ],
+                0 => [
+                  '#type' => 'inline_template',
+                  '#template' => '<div class="fw-bold">{{ title }}: </div>{{ value }}',
+                  '#context' => [
+                    'title' => $field['#title'],
+                    'value' => $value,
+                  ]
+                ]
+              ];
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_paragraph().
+ */
+function iconagency_preprocess_webform(&$variables) {
+  if ($variables['element']['#webform_id'] == 'request_a_translation') {
+    $variables['#attached']['library'][] = 'webform/webform.tooltip';
+  }
+}
+

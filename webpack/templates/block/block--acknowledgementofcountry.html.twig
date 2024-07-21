@@ -1,0 +1,23 @@
+{%
+  set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ plugin_id|clean_class,
+  ]
+%}
+<div{{attributes.addClass(classes)}}>
+	{{ title_prefix }}
+	{% if label %}
+		<h3{{title_attributes.addClass('text-center')}}>{{ label }}</h3>
+	{% endif %}
+	{{ title_suffix }}
+	{% block content %}
+		<div class="row">
+			<div class="max-w-ml mx-auto">
+				<div{{content_attributes.addClass('content','text-center')}}>
+					{{ content }}
+				</div>
+			</div>
+		</div>
+	{% endblock %}
+</div>

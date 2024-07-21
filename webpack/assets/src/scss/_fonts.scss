@@ -1,0 +1,21 @@
+@font-face {
+  font-family: "Proxima Nova";
+  font-weight: normal;
+  src: url("../resource/proxima-nova.eot");
+  src: url("../resource/proxima-nova.eot?#iefix") format("embedded-opentype"),
+  url("../resource/proxima-nova.woff2") format("woff2"),
+  url("../resource/proxima-nova.woff") format("woff"),
+  url("../resource/proxima-nova.ttf") format("truetype"),
+  url("../resource/proxima-nova.svg#ProximaNova-Regular") format("svg");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Proxima Nova";
+  font-weight: bold;
+  src: url("../resource/proxima-nova-bold.eot");
+  src: url("../resource/proxima-nova-bold.eot?#iefix") format("embedded-opentype"),
+   url("../resource/proxima-nova-bold.woff2") format("woff2"),
+   url("../resource/proxima-nova-bold.ttf") format("truetype");
+  font-display: swap;
+}

@@ -1,0 +1,39 @@
+{#
+/**
+ * @file
+ * Display Suite 1 column template.
+ *
+ * Available variables:
+ * - ds_content_wrapper: wrapper around content
+ * - attributes: content region attributes
+ * - ds_content: content region
+ */
+#}
+
+{% set classes = [
+  'ds-1col',
+  node.field_feature_banner.value ? 'featured-banner',
+] %}
+<{{ds_content_wrapper}}{{attributes.addClass(classes)}}>
+
+	{% if ds_content.field_banner_image %}
+		<div class="image-wrapper">
+			{{ ds_content.field_banner_image }}
+		</div>
+	{% endif %}
+
+	{% if ds_content.banner_image_desk %}
+		<div class="image-featured-wrapper">
+			{{ ds_content.banner_image_desk }}
+		</div>
+	{% endif %}
+
+	<div class="content">
+		<div class="inner-content">
+			{{ drupal_entity('block', 'iconagency_breadcrumbs') }}
+			{{ drupal_entity('block', 'iconagency_page_title') }}
+			{{ ds_content|without('field_banner_image', 'banner_image_desk') }}
+		</div>
+	</div>
+
+</{{ds_content_wrapper}}>

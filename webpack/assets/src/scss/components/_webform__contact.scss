@@ -1,0 +1,94 @@
+.captcha {
+  margin-bottom: $spacer * 2;
+}
+
+.mandatory {
+  font-style: italic;
+}
+
+.mandatory:before,
+.form-required:after {
+  @include font-size(1rem);
+
+  content: ' * ';
+  line-height: 0.75;
+  background: none !important;
+}
+
+.webform-submission-form {
+  select,
+  textarea {
+    margin-bottom: $spacer;
+  }
+
+  .form-check-input {
+    border-color: #929292;
+  }
+}
+
+.form-check-input,
+.btn-close {
+  &:focus {
+    box-shadow: 0 0 0 0.25rem $grey;
+  }
+}
+
+.webform-submission-contact-form {
+  .webform-title {
+    @include font-size(2.5rem);
+  }
+
+  label {
+    @include font-size($font-size-sm);
+
+    margin-bottom: $spacer !important;
+    // color: var(--bs-purple);
+    font-weight: 600;
+  }
+
+  label + .description {
+    @include font-size(1rem);
+
+    // color: var(--bs-body-color);
+  }
+
+  li {
+    &::marker {
+      // color: var(--bs-pink);
+    }
+  }
+
+  .mandatory {
+    position: absolute;
+    right: 0;
+    bottom: 00;
+    color: var(--bs-secondary);
+    font-size: $font-size-sm;
+  }
+
+  .description + div {
+    margin-top: 1rem;
+  }
+
+  div[data-drupal-messages] {
+    margin-bottom: $spacer * 3;
+  }
+
+  .form-wrapper.mb-3,
+  .webform-actions {
+    margin-bottom: 0 !important;
+  }
+
+  .iti.iti--allow-dropdown {
+    display: block;
+  }
+
+  .form-type-tel {
+    .form-item--error-message {
+      @include font-size(1rem);
+
+      color: var(--bs-danger);
+      font-weight: normal;
+    }
+  }
+}

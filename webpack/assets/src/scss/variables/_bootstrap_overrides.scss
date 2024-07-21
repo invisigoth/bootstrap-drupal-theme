@@ -1,0 +1,18 @@
+
+$spacer: 1rem;
+$headings-margin-bottom: $spacer * 1.75;
+
+// scss-docs-start container-max-widths
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  ml: 900px,
+  lg: 960px,
+  xl: 1140px,
+);
+// scss-docs-end container-max-widths
+
+$input-btn-padding-y: $spacer * .75;
+$input-btn-padding-x: $spacer * 1.5;
+
+$grid-gutter-width: 30px;

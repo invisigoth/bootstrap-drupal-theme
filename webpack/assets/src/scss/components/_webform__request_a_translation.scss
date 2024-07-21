@@ -1,0 +1,12 @@
+.webform-submission-request-a-translation-form {
+  padding: 0 $spacer;
+
+  .field {
+    font-size: $font-size-base;
+    margin-bottom: $spacer * .5;
+  }
+
+  @include media-breakpoint-up(lg) {
+    padding: 0;
+  }
+}

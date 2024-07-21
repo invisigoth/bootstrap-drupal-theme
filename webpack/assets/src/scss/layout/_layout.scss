@@ -1,0 +1,21 @@
+.node-header {
+  .bg-image {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    @include media-breakpoint-up(sm) {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 33%;
+      height: 100%;
+    }
+
+    @include media-breakpoint-up(lg) {
+      width: 50%;
+    }
+  }
+}
+
+

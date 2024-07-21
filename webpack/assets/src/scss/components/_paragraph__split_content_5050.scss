@@ -1,0 +1,28 @@
+.paragraph--type-split-content-5050 {
+  .inner-content {
+    max-width: 465px;
+  }
+
+  .paragraph--type-media {
+    margin-left: -$spacer;
+    margin-right: -$spacer;
+  }
+
+  @include media-breakpoint-up(md) {
+    .right {
+      padding-left: $spacer * 2;
+
+      .paragraph--type-media {
+        margin-left: 0;
+      }
+    }
+
+    .left {
+      padding-right: $spacer * 2;
+
+      .paragraph--type-media {
+        margin-right: 0;
+      }
+    }
+  }
+}

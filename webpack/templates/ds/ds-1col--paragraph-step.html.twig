@@ -1,0 +1,13 @@
+{% set classes = [
+  'ds-1col',
+] %}
+
+<{{ds_content_wrapper}}{{attributes.addClass(classes)}}>
+
+	{{ ds_content.field_icon }}
+	<div class="content">
+		<div class="step">{{ 'Step '|t }}</div>
+		{{ ds_content.field_title }}
+	</div>
+
+</{{ds_content_wrapper}}>

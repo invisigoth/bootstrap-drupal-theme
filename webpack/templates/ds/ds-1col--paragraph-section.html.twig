@@ -1,0 +1,24 @@
+{% set section_classes = [
+  'ds-1col',
+  'clearfix',
+] %}
+{% set container_attribute = create_attribute({
+  'class': [
+    'container',
+    'section-padding',
+    paragraph.field_background_color.value ? 'section--' ~ paragraph.field_background_color.value,
+    paragraph.field_max_width.value ? 'max-w-' ~ paragraph.field_max_width.value,
+    paragraph.field_half_padding_bottom.value ? 'section-half-padding-bottom',
+    paragraph.field_half_padding_top.value ? 'section-half-padding-top',
+    paragraph.field_no_padding_bottom.value ? 'section-no-padding-bottom',
+    paragraph.field_no_padding_top.value ? 'section-no-padding-top',
+  ]
+}) %}
+
+<{{ds_content_wrapper}}{{attributes.addClass(section_classes)}}>
+
+	<div{{container_attribute}}>
+		{{ ds_content.field_section_content }}
+	</div>
+
+</{{ds_content_wrapper}}>

@@ -1,0 +1,51 @@
+<div id="page-wrapper">
+	<div id="page">
+
+		{% include '@iconagency/layout/includes/page-header.html.twig' %}
+
+		<div id="banner" class="section--grey">
+			{% if page.banner.banner_entity_view_mode %}
+				{{ page.banner|without('iconagency_breadcrumbs', 'iconagency_page_title') }}
+			{% else %}
+				<div class="container">{{ page.banner }}</div>
+			{% endif %}
+		</div>
+
+		{% if page.highlighted %}
+			<aside class="container section highlighted clearfix" role="complementary">
+				{{ page.highlighted }}
+			</aside>
+		{% endif %}
+
+		<div id="main-wrapper" class="layout-main-wrapper clearfix">
+			{% block content %}
+				<div id="main" class="{{ full_width ? '' : 'container py-5' }}">
+					<div class="row-offcanvas row-offcanvas-left clearfix">
+						<main{{content_attributes.addClass('p-0')}}>
+							<section class="section">
+								<a id="main-content" tabindex="-1"></a>
+								{{ page.content }}
+							</section>
+						</main>
+						{% if page.sidebar_first %}
+							<div{{sidebar_first_attributes}}>
+								<aside class="section" role="complementary">
+									{{ page.sidebar_first }}
+								</aside>
+							</div>
+						{% endif %}
+						{% if page.sidebar_second %}
+							<div{{sidebar_second_attributes}}>
+								<aside class="section" role="complementary">
+									{{ page.sidebar_second }}
+								</aside>
+							</div>
+						{% endif %}
+					</div>
+				</div>
+			{% endblock %}
+		</div>
+
+		{% include '@iconagency/layout/includes/page-footer.html.twig' %}
+	</div>
+</div>

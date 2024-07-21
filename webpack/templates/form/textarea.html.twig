@@ -1,0 +1,5 @@
+{% extends '@bootstrap_barrio/form/textarea.html.twig' %}
+
+{% if attributes.hasClass('error') %}
+	{% do attributes.addClass('is-invalid') %}
+{% endif %}

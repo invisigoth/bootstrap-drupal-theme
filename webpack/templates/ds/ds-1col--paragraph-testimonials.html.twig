@@ -1,0 +1,32 @@
+{% set id = 'paragraph-id-' ~ paragraph.id() %}
+{% set classes = [
+  'ds-1col',
+  'carousel',
+  'slide',
+] %}
+
+<{{ds_content_wrapper}}{{attributes.addClass(classes).setAttribute('id',id)}}>
+	<div class="mb-3">
+		{{ source('@iconagency/../assets/images/quote-bubble.svg') }}
+	</div>
+
+	{{ ds_content }}
+
+	<div class="carousel-controls d-flex d-lg-block justify-content-between align-items-center">
+		<button class="carousel-prev carousel-control-btn" type="button" data-bs-target="#{{ id }}" data-bs-slide="prev">
+			{{ source('@iconagency/../assets/images/arrow-right.svg') }}
+			<span class="visually-hidden">{{ 'Previous'|t }}</span>
+		</button>
+
+		<div class="carousel-indicators">
+			{% for i in 0..(ds_content.field_section_content['#items']|length) - 1 %}
+				<button type="button" data-bs-target="#{{ id }}" data-bs-slide-to="{{ i }}" {% if i == 0 %} class="active" aria-current="true" {% endif %} aria-label="Slide {{ i + 1 }}"></button>
+			{% endfor %}
+		</div>
+
+		<button class="carousel-next carousel-control-btn" type="button" data-bs-target="#{{ id }}" data-bs-slide="next">
+			{{ source('@iconagency/../assets/images/arrow-right.svg') }}
+			<span class="visually-hidden">{{ 'Next'|t }}</span>
+		</button>
+	</div>
+</{{ds_content_wrapper}}>

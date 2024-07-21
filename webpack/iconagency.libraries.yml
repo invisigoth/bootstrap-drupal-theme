@@ -1,0 +1,15 @@
+global:
+  version: 1.0.0
+  js:
+    assets/dist/js/popper.min.js: { minified: true, preprocess: false }
+    assets/dist/js/bootstrap.min.js: { minified: true, preprocess: false }
+    assets/dist/js/app.js: { minified: true, preprocess: false }
+  css:
+    theme:
+      'https://use.typekit.net/psf5aib.css': { external: true }
+      assets/dist/css/vendors.css: { minified: true, preprocess: false }
+      assets/dist/css/app.css: { minified: true, preprocess: false }
+      assets/dist/css/print.css: { minified: true, preprocess: false, media: print }
+  dependencies:
+    - core/drupal
+    - core/drupalSettings

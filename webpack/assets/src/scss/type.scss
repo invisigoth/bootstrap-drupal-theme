@@ -1,0 +1,55 @@
+p,
+ol,
+ul,
+table,
+h1,
+h2,
+h3,
+h4,
+h5 {
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.text-pink,
+.text-magenta {
+  color: var(--bs-pink);
+}
+
+.text-formatted {
+  a {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+  }
+}
+
+h1,
+.h1 {
+  font-weight: $font-weight-bold;
+  line-height: 1;
+}
+
+h2,
+.h2 {
+  font-weight: $font-weight-bold;
+  line-height: $line-height-sm;
+}
+
+h3,
+.h3 {
+  font-weight: $font-weight-normal;
+  line-height: $line-height-sm;
+}
+
+em.placeholder {
+  display: inline;
+  min-height: unset;
+  margin: 0;
+  padding: 0;
+  cursor: default;
+  vertical-align: baseline;
+  opacity: 1;
+  background-color: unset;
+}

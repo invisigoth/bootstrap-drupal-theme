@@ -1,0 +1,22 @@
+#banner {
+  .container {
+    min-height: 108px;
+  }
+
+  #block-iconagency-page-title {
+    padding-bottom: $spacer * 2;
+    padding-top: $spacer * 2;
+  }
+
+  @include media-breakpoint-up(md) {
+    .container {
+      min-height: 180px;
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    .container {
+      min-height: 260px;
+    }
+  }
+}

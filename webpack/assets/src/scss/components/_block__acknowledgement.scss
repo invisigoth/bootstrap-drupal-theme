@@ -1,0 +1,9 @@
+#block-acknowledgementofcountry {
+  border-bottom: 1px solid rgba($white, .1);
+  margin-bottom: clamp(1rem, 6vw, 3rem);
+  padding-bottom: clamp(1rem, 6vw, 3rem);
+
+  h3 {
+    color: var(--bs-white);
+  }
+}

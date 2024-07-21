@@ -1,0 +1,16 @@
+footer.site-footer {
+  color: var(--bs-white);
+
+  a {
+    text-decoration: underline;
+    color: var(--bs-white);
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  @include media-breakpoint-up(md) {
+    margin-top: $spacer * 7;
+  }
+}

@@ -1,0 +1,9 @@
+<footer class="site-footer section-padding section--dark-purple">
+	{% block footer %}
+		<div class="container">
+			{% if page.footer %}
+				{{ page.footer }}
+			{% endif %}
+		</div>
+	{% endblock %}
+</footer>

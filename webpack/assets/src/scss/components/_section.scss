@@ -1,0 +1,56 @@
+.section-padding {
+  padding-top: $section_padding;
+  padding-bottom: $section_padding;
+
+  &.section-half-padding-top {
+    padding-top: $section_half_padding;
+  }
+
+  &.section-half-padding-bottom {
+    padding-bottom: $section_half_padding;
+  }
+
+  &.section-no-padding-top {
+    padding-top: 0;
+  }
+
+  &.section-no-padding-bottom {
+    padding-bottom: 0;
+  }
+}
+
+.section--grey {
+  background-color: var(--bs-light-grey);
+}
+
+.section--dark-purple,
+.section--navy {
+  background-color: var(--bs-navy);
+  color: var(--bs-white);
+
+  a {
+    color: var(--bs-white);
+  }
+
+  @for $i from 1 through 6 {
+    .h#{$i},
+      h#{$i} {
+      color: var(--bs-white);
+    }
+  }
+}
+
+.section--dark-purple {
+  background-color: var(--bs-dark-purple);
+}
+
+.section--turquoise {
+  background-color: var(--bs-turquoise);
+
+  @for $i from 1 through 6 {
+    .h#{$i},
+      h#{$i} {
+      color: var(--bs-dark-purple);
+    }
+  }
+}

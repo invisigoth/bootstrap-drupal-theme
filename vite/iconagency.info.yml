@@ -1,0 +1,32 @@
+name: Icon Agency Client
+description: |
+  A custom theme specifically created for this website,
+  built by <a href="https://iconagency.com.au">Icon Agency</a>.
+
+type: theme
+'base theme': stable9
+starterkit: true
+core_version_requirement: ^9.4 || ^10
+php: 8.1
+
+ckeditor5-stylesheets:
+  - dist/assets/ckeditor.css
+
+libraries:
+  - iconagency/hmr
+  - iconagency/app
+
+regions:
+  alerts: Alerts
+  header: Header
+  primary_menu: 'Primary menu'
+  secondary_menu: 'Secondary menu'
+  messages: Messages
+  breadcrumb: Breadcrumb
+  highlighted: Highlighted
+  help: Help
+  content: Content
+  sidebar_first: 'Sidebar first'
+  sidebar_second: 'Sidebar second'
+  footer: 'Footer'
+  mobile_menu: 'Mobile menu'

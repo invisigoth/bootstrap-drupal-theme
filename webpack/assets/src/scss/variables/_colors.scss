@@ -1,0 +1,69 @@
+// scss-docs-start gray-color-variables
+$white: #fff;
+$gray-100: #f8f9fa;
+$gray-200: #e9ecef;
+$gray-300: #dee2e6;
+$gray-400: #ced4da;
+$gray-500: #adb5bd;
+$gray-600: #6c757d;
+$gray-700: #495057;
+$gray-800: #343a40;
+$gray-900: #212529;
+$black: #1b1b1b;
+// scss-docs-end gray-color-variables
+
+// scss-docs-start color-variables
+$navy: #002C3D;
+$peach: #EC7F71;
+$power-peach: #F2ECE9;
+$turquoise: #28B2BB;
+$dark-purple: #1E1544;
+$purple: #8C5AA5;
+$grey: #80959E;
+$grey-lighter: #CFCCD6;
+$light-grey: #F2F2F2;
+$mercy-blue: #4D6B77;
+$blue: #0d6efd;
+$red: #dc3545;
+$yellow: #ffc107;
+$green: #198754;
+$cyan: #0dcaf0;
+$contrast-link: #8ee2ff;
+// scss-docs-end color-variables
+
+// scss-docs-start colors-map
+$colors: (
+  'navy': $navy,
+  'peach': $peach,
+  'power-peach': $power-peach,
+  'grey': $grey,
+  'grey-lighter': $grey-lighter,
+  'light-grey': $light-grey,
+  'turquoise': $turquoise,
+  'dark-purple': $dark-purple,
+  'purple': $purple,
+  'mercy-blue': $mercy-blue,
+  'red': $red,
+  'yellow': $yellow,
+  'green': $green,
+  'cyan': $cyan,
+  'white': $white,
+  'gray': $gray-600,
+  'gray-dark': $gray-800,
+  'black': $black,
+);
+// scss-docs-end colors-map
+
+// scss-docs-start theme-color-variables
+$primary: $dark-purple;
+$secondary: $turquoise;
+$success: $green;
+$info: $cyan;
+$warning: $yellow;
+$danger: $red;
+$light: $gray-100;
+$dark: $gray-900;
+$body-color: $dark-purple;
+// scss-docs-end theme-color-variables
+
+$input-placeholder-color: rgba($black, 0.25);

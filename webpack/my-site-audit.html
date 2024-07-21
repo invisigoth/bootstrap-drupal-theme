@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Drupal 8 Full Audit - default</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/drutiny/drutiny/2.1.x/assets/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/drutiny/drutiny/2.1.x/assets/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="https://raw.githubusercontent.com/drutiny/drutiny/2.1.x/assets/manifest.json">
+  <link rel="mask-icon" href="./logo.svg" color="#00a9e3">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css">
+  <style>
+    body {
+      padding-top: 45px;
+      padding-bottom: 20px;
+    }
+    table {
+      font-size: 14px;
+    }
+    .page-header {
+      border-bottom: none;
+    }
+    .alert-success, .alert-danger {
+      background-color: transparent;
+      color: #333333;
+    }
+    #acquia-logo {
+      max-width: 200px;
+    }
+    @media print {
+      .result-group {
+        page-break-inside: avoid;
+      }
+    }
+    @media print {
+      .display-filters {
+        display: none !important;
+      }
+      /*.table .danger td,
+      .table td.danger,
+      .table .danger th {
+        background-color: #f2dede !important;
+      }
+      .table .warning td,
+      .table td.warning,
+      .table .warning th {
+        background-color: #fcf8e3 !important;
+      }
+      .table .success td,
+      .table td.success,
+      .table .success th {
+        background-color: #dff0d8 !important;
+      }*/
+    }
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">
+        Drupal 8 Full Audit
+      </a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+
+    </div><!--/.navbar-collapse -->
+  </div>
+</nav>
+<a id="top"></a>
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron">
+  <div class="container">
+    <img width="300" height="200" alt="govCMS" class="logo" src="./logo.svg">
+    <h1>Drupal 8 Full Audit</h1>
+    <p>default</p>
+    <p>default</p>
+  </div>
+</div>
+
+<div id="report" class="container">
+  <div class="row" id="table_of_contents">
+  <h2>Table of Contents</h2>
+  <ul>
+  <li class="first">
+    <a href="#purpose">Purpose</a>
+  </li>
+  <li>
+    <a href="#reporting-period">Reporting period</a>
+  </li>
+  <li>
+    <a href="#recommendations">Recommendations</a>
+  </li>
+  <li>
+    <a href="#findings">Findings</a>
+    <ul class="menu_level_1">
+      <li class="first">
+        <a href="#issue-summary">Issue Summary</a>
+      </li>
+      <li>
+        <a href="#issues">Issues</a>
+      </li>
+      <li class="last">
+        <a href="#warnings">Warnings</a>
+      </li>
+    </ul>
+  </li>
+  <li class="last">
+    <a href="#appendix">Appendix</a>
+    <ul class="menu_level_1">
+      <li class="first">
+        <a href="#appendix-summary">Appendix - Summary</a>
+      </li>
+      <li class="last">
+        <a href="#appendix-successful-assessments">Appendix - Successful Assessments</a>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+</div>
+<style type="text/css">
+
+#table_of_contents ul
+{
+  list-style-type: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+#table_of_contents li a
+{
+  line-height: 180%;
+}
+#table_of_contents ul li
+{
+  list-style-type: none;
+  padding-left: 5px;
+  margin-bottom: 2px;
+}
+
+#table_of_contents > ul ul
+{
+  padding-left: 5px;
+  padding-bottom: 5px;
+}
+/*H2 heading links*/
+#table_of_contents > ul > li > a
+{
+  font-weight: bold;
+  font-size: 19px; /* Same as H4 */
+  line-height: 200%;
+}
+
+#table_of_contents ul.menu_level_2 a
+{
+  font-weight: lighter;
+}
+</style>
+
+  <!-- Example row of columns -->
+  <div class="row">
+
+          <section>
+      <span class="navbar-pad"></span><h2 id="purpose">Purpose</h2>
+<p>This report is designed to provide some feedback on the overall health of
+the web application by performing some deep dive analysis. The items
+surfaced in the report can help improve performance and stability.</p>
+      </section>
+          <section>
+      <span class="navbar-pad"></span><h2 id="reporting-period">Reporting period</h2>
+<table class="table table-hover">
+<thead>
+<tr>
+<th>Period</th>
+<th>Date time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Start</td>
+<td>2022-04-06 00:00:00 UTC</td>
+</tr>
+<tr>
+<td>End</td>
+<td>2022-04-07 00:00:00 UTC</td>
+</tr>
+</tbody>
+</table>
+      </section>
+          <section>
+      <span class="navbar-pad"></span><h2 id="recommendations">Recommendations</h2>
+<ul>
+  <li><p>Set the configuration object <code>system.performance</code> key <code>css.preprocess</code> to be <code>TRUE</code>.</p></li>
+  <li><p>Set the configuration object <code>system.performance</code> key <code>js.preprocess</code> to be <code>TRUE</code>.</p></li>
+  <li><p>Set the config system.logging:error_level to be 'hide'.</p></li>
+  <li><p>Ensure a regular cron job is set to regularly run cron.</p></li>
+</ul>
+      </section>
+          <section>
+      <span class="navbar-pad"></span><h2 id="findings">Findings</h2>
+<p></p><div class="chart-unprocessed" data-chart-type="horizontalBar" data-chart-title="Audit outcome by severity" data-chart-hide-table="true" data-chart-labels="tbody th" data-chart-series="tr td:nth-child(2), tr td:nth-child(3), tr td:nth-child(4), tr td:nth-child(5), tr td:nth-child(6)" data-chart-series-labels="thead th:nth-child(2), thead th:nth-child(3), thead th:nth-child(4), thead th:nth-child(5), thead th:nth-child(6)" data-chart-stacked="true" data-chart-height="250" data-chart-legend="bottom" data-chart-x-axis="Policies Audited" data-chart-colors="rgba(46, 204, 113,1.0);rgba(192, 57, 43,1.0);rgba(230, 126, 34,1.0);rgba(241, 196, 15,1.0);rgba(52, 73, 94,1.0)"></div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Severity</th>
+      <th>Pass</th>
+      <th>Fail</th>
+      <th>Error</th>
+      <th>Warning</th>
+      <th>Not Applicable</th>
+    </tr>
+  </thead>
+  <tbody>
+        <tr>
+      <th>critical (3)</th>
+      <td>
+        3
+      </td>
+      <td>
+        0
+      </td>
+      <td>
+        0
+      </td>
+      <td>
+        0
+      </td>
+      <td>
+        0
+      </td>
+    </tr>
+        <tr>
+      <th>high (13)</th>
+      <td>
+        12
+      </td>
+      <td>
+        0
+      </td>
+      <td>
+        0
+      </td>
+      <td>
+        1
+      </td>
+      <td>
+        0
+      </td>
+    </tr>
+        <tr>
+      <th>medium (19)</th>
+      <td>
+        15
+      </td>
+      <td>
+        4
+      </td>
+      <td>
+        0
+      </td>
+      <td>
+        0
+      </td>
+      <td>
+        0
+      </td>
+    </tr>
+        <tr>
+      <th>low (1)</th>
+      <td>
+        1
+      </td>
+      <td>
+        0
+      </td>
+      <td>
+        0
+      </td>
+      <td>
+        0
+      </td>
+      <td>
+        0
+      </td>
+    </tr>
+      </tbody>
+</table>
+<span class="navbar-pad"></span><h3 id="issue-summary">Issue Summary</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Policy</th>
+      <th>Severity</th>
+      <th>Audit</th>
+    </tr>
+  </thead>
+  <tbody>
+        <tr class="has-success">
+      <th><a href="#Administratorloginislockeddownuid1">Administrator login is locked down (uid:1)</a></th>
+      <td>high</td>
+      <td class="control-label">Warning</td>
+      </tr>
+        <tr class="has-error">
+      <th><a href="#Cronrunningregularly">Cron running regularly</a></th>
+      <td>medium</td>
+      <td class="control-label">Failed</td>
+      </tr>
+        <tr class="has-error">
+      <th><a href="#Hideerrorsfromscreenlogonly">Hide errors from screen (log only)</a></th>
+      <td>medium</td>
+      <td class="control-label">Failed</td>
+      </tr>
+        <tr class="has-error">
+      <th><a href="#Javascriptaggregation">Javascript aggregation</a></th>
+      <td>medium</td>
+      <td class="control-label">Failed</td>
+      </tr>
+        <tr class="has-error">
+      <th><a href="#CSSaggregationisenabled">CSS aggregation is enabled</a></th>
+      <td>medium</td>
+      <td class="control-label">Failed</td>
+      </tr>
+      </tbody>
+</table>
+<span class="navbar-pad"></span><h3 id="issues">Issues</h3>
+<div class="row result-group">
+  <div class="col-sm-12 col-md-10">
+    <span class="navbar-pad"></span><h4 id="CSSaggregationisenabled">CSS aggregation is enabled <span class="text-danger glyphicon glyphicon-remove" aria-hidden="true"></span></h4>
+
+    <p>With CSS optimization not installed your website visitors are experiencing slower page performance and the server load is increased.</p>
+
+    <div class="alert alert-danger" role="alert">
+      <p>CSS aggregation is not enabled.</p>
+    </div>
+
+        <div class="alert alert-info" role="alert">
+    <h5 id="remediation">Remediation</h5>
+    <p>Set the configuration object <code>system.performance</code> key <code>css.preprocess</code> to be <code>TRUE</code>.</p>
+    </div>
+  </div>
+</div>
+<div class="row result-group">
+  <div class="col-sm-12 col-md-10">
+    <span class="navbar-pad"></span><h4 id="Javascriptaggregation">Javascript aggregation <span class="text-danger glyphicon glyphicon-remove" aria-hidden="true"></span></h4>
+
+    <p>With Javascript aggregation not installed your website visitors are experiencing slower page performance especially on slower networks.</p>
+
+    <div class="alert alert-danger" role="alert">
+      <p>Javascript aggregation is not enabled.</p>
+    </div>
+
+        <div class="alert alert-info" role="alert">
+    <h5 id="remediation-1">Remediation</h5>
+    <p>Set the configuration object <code>system.performance</code> key <code>js.preprocess</code> to be <code>TRUE</code>.</p>
+    </div>
+  </div>
+</div>
+<div class="row result-group">
+  <div class="col-sm-12 col-md-10">
+    <span class="navbar-pad"></span><h4 id="Hideerrorsfromscreenlogonly">Hide errors from screen (log only) <span class="text-danger glyphicon glyphicon-remove" aria-hidden="true"></span></h4>
+
+    <p>When PHP encounters an error, it can generate an error log and display a
+report on the screen. While these error messages can be helpful in debugging
+your site, they can be a security risk on a live site as they may reveal
+information about your server that can be used to compromise it.</p>
+
+    <div class="alert alert-danger" role="alert">
+      <p>Errors are shown on the screen, currently set to log error_level.</p>
+    </div>
+
+        <div class="alert alert-info" role="alert">
+    <h5 id="remediation-2">Remediation</h5>
+    <p>Set the config system.logging:error_level to be 'hide'.</p>
+    </div>
+  </div>
+</div>
+<div class="row result-group">
+  <div class="col-sm-12 col-md-10">
+    <span class="navbar-pad"></span><h4 id="Cronrunningregularly">Cron running regularly <span class="text-danger glyphicon glyphicon-remove" aria-hidden="true"></span></h4>
+
+    <p>Making sure the cron jobs are running properly is key to a healthy Drupal site.</p>
+
+    <div class="alert alert-danger" role="alert">
+      <p>Cron was last run Tuesday 5th of April 2022 06:02:54 PM</p>
+    </div>
+
+        <div class="alert alert-info" role="alert">
+    <h5 id="remediation-3">Remediation</h5>
+    <p>Ensure a regular cron job is set to regularly run cron.</p>
+    </div>
+  </div>
+</div>
+<span class="navbar-pad"></span><h3 id="warnings">Warnings</h3>
+<div class="row result-group">
+
+  <div class="col-sm-12 col-md-10">
+    <span class="navbar-pad"></span><h4 id="Administratorloginislockeddownuid1">Administrator login is locked down (uid:1) <small class="label label-">Warning <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></small></h4>
+    <p></p><p>It is important to lock down user #1 in Drupal, this user is special an
+ignores access control.</p>
+    <div class="panel panel-success">
+      <div class="panel-heading">Warning</div>
+      <div class="panel-body">
+        <p>User #1 is locked down.</p>
+<ul>
+<li>Username is set to vWZiUPtADYtIJKVG</li>
+<li>Email is set to no_reply@govcms.gov.au</li>
+<li>Status is set to 1</li>
+<li>If remediation took place, then the password has been updated.</li>
+</ul>
+                <div class="alert alert-warning" role="alert">
+          <p>User #1 is not secure.</p>
+<ul>
+<li>Email address 'user+1@localhost.localdomain' is not set correctly.</li>
+<li>Status is not set correctly. Should be inactive.</li>
+</ul>
+        </div>
+              </div>
+    </div>
+  </div>
+</div>
+      </section>
+          <section>
+      <span class="navbar-pad"></span><h2 id="appendix">Appendix</h2>
+<span class="navbar-pad"></span><h3 id="appendix-summary">Appendix - Summary</h3>
+<p>The below table describes all audit and analysis work completed for the
+production of this report and their associated outcomes.</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Policy</th>
+      <th>Severity</th>
+      <th>Audit</th>
+    </tr>
+  </thead>
+  <tbody>
+        <tr class="has-success">
+      <th><a href="#ClamAVmoduleenabled">ClamAV module enabled</a></th>
+      <td>high</td>
+      <td class="control-label">Passed</td>
+      </tr>
+        <tr class="has-success">
+      <th><a href="#GoogleAnalyticsmoduleenabled">Google Analytics module enabled</a></th>
+      <td>high</td>
+      <td class="control-label">Passed</td>
+      </tr>
+        <tr class="has-success">
+      <th><a href="#GovCMSSecuritymoduleenabled">GovCMS Security module enabled</a></th>
+      <td>high</td>
+      <td class="control-label">Passed</td>
+      </tr>
+        <tr class="has-success">
+      <th><a href="#LoginSecuritymoduleenabled">Login Security module enabled</a></th>
+      <td>high</td>
+      <td class="control-label">Passed</td>
+      </tr>
+        <tr class="has-success">
+      <th><a href="#PasswordPolicymoduleenabled">Password Policy module enabled</a></th>
+      <td>high</td>
+      <td class="control-label">Passed</td>
+      </tr>
+        <tr class="has-success">
+      <th><a href="#RobotsTXTmoduleenabled">RobotsTXT module enabled</a></th>
+      <td>high</td>
+      <td class="control-label">Passed</td>
+      </tr>
+        <tr class="has-success">
+      <th><a href="#RobotsTXTmoduleenabled">RobotsTXT module enabled</a></th>
+      <td>high</td>
+      <td class="control-label">Passed</td>
+      </tr>
+        <tr class="has-success">
+      <th><a href="#Shieldmoduleenabled">Shield module enabled</a></th>
+      <td>high</td>
+      <td class="control-label">Passed</td>
+      </tr>
+        <tr class="has-success">
+      <th><a href="#UsernameEnumerationPreventionmoduleenabled">Username Enumeration Prevention module enabled</a></th>
+      <td>high</td>
+      <td class="control-label">Passed</td>
+      </tr>
+        <tr class="has-success">
+      <th><a href="#Syslog">Syslog</a></th>
+      <td>medium</td>
+      <td class="control-label">Passed</td>
+      </tr>
+        <tr class="has-success">
+      <th><a href="#Databaseloggingisnotinstalled">Database logging is not installed</a></th>
+      <td>medium</td>
+      <td class="control-label">Passed</td>
+      </tr>
+        <tr class="has-success">
+      <th><a href="#PHPmoduleisnotinstalled">PHP module is not installed</a></th>
+      <td>high</td>
+      <td class="control-label">Passed</td>
+      </tr>
+        <tr class="has-success">
+      <th><a href="#Simpletestmoduleisnotinstalled">Simpletest module is not installed</a></th>
+      <td>medium</td>
+      <td class="control-label">Passed</td>
+      </tr>
+        <tr class="has-success">
+      <th><a href="#ConfigIgnoremoduleenabled">Config Ignore module enabled</a></th>
+      <td>high</td>
+      <td class="control-label">Passed</td>
+      </tr>
+        <tr class="has-success">
+      <th><a href="#Statisticsmoduleisnotinstalled">Statistics module is not installed</a></th>
+      <td>medium</td>
+      <td class="control-label">Passed</td>
+      </tr>
+        <tr class="has-success">
+      <th><a href="#Updatemoduleisnotinstalled">Update module is not installed</a></th>
+      <td>high</td>
+      <td class="control-label">Passed</td>
+      </tr>
+        <tr class="has-success">
+      <th><a href="#LayoutBuilderisnotinstalled">Layout Builder is not installed</a></th>
+      <td>medium</td>
+      <td class="control-label">Passed</td>
+      </tr>
+        <tr class="has-success">
+      <th><a href="#Anonymoussessions">Anonymous sessions</a></th>
+      <td>medium</td>
+      <td class="control-label">Passed</td>
+      </tr>
+        <tr class="has-success">
+      <th><a href="#Administratorloginislockeddownuid1">Administrator login is locked down (uid:1)</a></th>
+      <td>high</td>
+      <td class="control-label">Warning</td>
+      </tr>
+        <tr class="has-success">
+      <th><a href="#Userregistrationavailabletoadministratorsonly">User registration available to administrators only</a></th>
+      <td>medium</td>
+      <td class="control-label">Passed</td>
+      </tr>
+        <tr class="has-success">
+      <th><a href="#Useradministrationaccountsecurityvalidation">User administration account security validation</a></th>
+      <td>critical</td>
+      <td class="control-label">Passed</td>
+      </tr>
+        <tr class="has-success">
+      <th><a href="#Drupalusersincertainroles">Drupal users in certain roles</a></th>
+      <td>critical</td>
+      <td class="control-label">Passed</td>
+      </tr>
+        <tr class="has-success">
+      <th><a href="#BlackListPermissions">BlackList Permissions</a></th>
+      <td>critical</td>
+      <td class="control-label">Passed</td>
+      </tr>
+        <tr class="has-error">
+      <th><a href="#CSSaggregationisenabled">CSS aggregation is enabled</a></th>
+      <td>medium</td>
+      <td class="control-label">Failed</td>
+      </tr>
+        <tr class="has-error">
+      <th><a href="#Javascriptaggregation">Javascript aggregation</a></th>
+      <td>medium</td>
+      <td class="control-label">Failed</td>
+      </tr>
+        <tr class="has-error">
+      <th><a href="#Hideerrorsfromscreenlogonly">Hide errors from screen (log only)</a></th>
+      <td>medium</td>
+      <td class="control-label">Failed</td>
+      </tr>
+        <tr class="has-error">
+      <th><a href="#Cronrunningregularly">Cron running regularly</a></th>
+      <td>medium</td>
+      <td class="control-label">Failed</td>
+      </tr>
+        <tr class="has-success">
+      <th><a href="#Databaseupdates">Database updates</a></th>
+      <td>medium</td>
+      <td class="control-label">Passed</td>
+      </tr>
+        <tr class="has-success">
+      <th><a href="#Databasesize">Database size</a></th>
+      <td>medium</td>
+      <td class="control-label">Passed</td>
+      </tr>
+        <tr class="has-success">
+      <th><a href="#Largepublicfiles">Large public files</a></th>
+      <td>medium</td>
+      <td class="control-label">Passed</td>
+      </tr>
+        <tr class="has-success">
+      <th><a href="#LargeDrupalFiles">Large Drupal Files</a></th>
+      <td>medium</td>
+      <td class="control-label">Passed</td>
+      </tr>
+        <tr class="has-success">
+      <th><a href="#Sensitivepublicfiles">Sensitive public files</a></th>
+      <td>medium</td>
+      <td class="control-label">Passed</td>
+      </tr>
+        <tr class="has-success">
+      <th><a href="#LargeDrupalFilesmatchingtype">Large Drupal Files matching type</a></th>
+      <td>medium</td>
+      <td class="control-label">Passed</td>
+      </tr>
+        <tr class="has-success">
+      <th><a href="#LintPHPfilesinTheme">Lint PHP files in Theme</a></th>
+      <td>low</td>
+      <td class="control-label">Passed</td>
+      </tr>
+        <tr class="has-success">
+      <th><a href="#DrupalThemeDirectorySize">Drupal Theme Directory Size</a></th>
+      <td>medium</td>
+      <td class="control-label">Passed</td>
+      </tr>
+        <tr class="has-success">
+      <th><a href="#DrupalThemeSecurityPerformance">Drupal Theme Security &amp; Performance</a></th>
+      <td>medium</td>
+      <td class="control-label">Passed</td>
+      </tr>
+      </tbody>
+</table>
+<span class="navbar-pad"></span><h3 id="appendix-successful-assessments">Appendix - Successful Assessments</h3>
+<div class="row result-group">
+  <div class="col-sm-12 col-md-10">
+    <span class="navbar-pad"></span><h4 id="ClamAVmoduleenabled">ClamAV module enabled <small class="label label-">Passed <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></small></h4>
+    <p></p><p>GovCMS Platform requirement</p>
+    <div class="panel panel-success">
+      <div class="panel-heading">Passed</div>
+      <div class="panel-body">
+        <p>The clamav module is currently enabled.</p>
+              </div>
+    </div>
+
+  </div>
+</div>
+<div class="row result-group">
+  <div class="col-sm-12 col-md-10">
+    <span class="navbar-pad"></span><h4 id="GoogleAnalyticsmoduleenabled">Google Analytics module enabled <small class="label label-">Passed <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></small></h4>
+    <p></p><p>GovCMS Platform requirement</p>
+    <div class="panel panel-success">
+      <div class="panel-heading">Passed</div>
+      <div class="panel-body">
+        <p>The google_analytics module is currently enabled.</p>
+              </div>
+    </div>
+
+  </div>
+</div>
+<div class="row result-group">
+  <div class="col-sm-12 col-md-10">
+    <span class="navbar-pad"></span><h4 id="GovCMSSecuritymoduleenabled">GovCMS Security module enabled <small class="label label-">Passed <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></small></h4>
+    <p></p><p>GovCMS Platform requirement</p>
+    <div class="panel panel-success">
+      <div class="panel-heading">Passed</div>
+      <div class="panel-body">
+        <p>The govcms_security module is currently enabled.</p>
+              </div>
+    </div>
+
+  </div>
+</div>
+<div class="row result-group">
+  <div class="col-sm-12 col-md-10">
+    <span class="navbar-pad"></span><h4 id="LoginSecuritymoduleenabled">Login Security module enabled <small class="label label-">Passed <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></small></h4>
+    <p></p><p>GovCMS Platform requirement</p>
+    <div class="panel panel-success">
+      <div class="panel-heading">Passed</div>
+      <div class="panel-body">
+        <p>The login_security module is currently enabled.</p>
+              </div>
+    </div>
+
+  </div>
+</div>
+<div class="row result-group">
+  <div class="col-sm-12 col-md-10">
+    <span class="navbar-pad"></span><h4 id="PasswordPolicymoduleenabled">Password Policy module enabled <small class="label label-">Passed <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></small></h4>
+    <p></p><p>GovCMS Platform requirement</p>
+    <div class="panel panel-success">
+      <div class="panel-heading">Passed</div>
+      <div class="panel-body">
+        <p>The password_policy module is currently enabled.</p>
+              </div>
+    </div>
+
+  </div>
+</div>
+<div class="row result-group">
+  <div class="col-sm-12 col-md-10">
+    <span class="navbar-pad"></span><h4 id="RobotsTXTmoduleenabled">RobotsTXT module enabled <small class="label label-">Passed <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></small></h4>
+    <p></p><p>GovCMS Platform requirement</p>
+    <div class="panel panel-success">
+      <div class="panel-heading">Passed</div>
+      <div class="panel-body">
+        <p>The robotstxt module is currently enabled.</p>
+              </div>
+    </div>
+
+  </div>
+</div>
+<div class="row result-group">
+  <div class="col-sm-12 col-md-10">
+    <span class="navbar-pad"></span><h4 id="RobotsTXTmoduleenabled">RobotsTXT module enabled <small class="label label-">Passed <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></small></h4>
+    <p></p><p>GovCMS Platform requirement</p>
+    <div class="panel panel-success">
+      <div class="panel-heading">Passed</div>
+      <div class="panel-body">
+        <p>The robotstxt module is currently enabled.</p>
+              </div>
+    </div>
+
+  </div>
+</div>
+<div class="row result-group">
+  <div class="col-sm-12 col-md-10">
+    <span class="navbar-pad"></span><h4 id="Shieldmoduleenabled">Shield module enabled <small class="label label-">Passed <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></small></h4>
+    <p></p><p>GovCMS Platform requirement</p>
+    <div class="panel panel-success">
+      <div class="panel-heading">Passed</div>
+      <div class="panel-body">
+        <p>The shield module is currently enabled.</p>
+              </div>
+    </div>
+
+  </div>
+</div>
+<div class="row result-group">
+  <div class="col-sm-12 col-md-10">
+    <span class="navbar-pad"></span><h4 id="UsernameEnumerationPreventionmoduleenabled">Username Enumeration Prevention module enabled <small class="label label-">Passed <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></small></h4>
+    <p></p><p>GovCMS Platform requirement</p>
+    <div class="panel panel-success">
+      <div class="panel-heading">Passed</div>
+      <div class="panel-body">
+        <p>The username_enumeration_prevention module is currently enabled.</p>
+              </div>
+    </div>
+
+  </div>
+</div>
+<div class="row result-group">
+  <div class="col-sm-12 col-md-10">
+    <span class="navbar-pad"></span><h4 id="Syslog">Syslog <small class="label label-">Passed <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></small></h4>
+    <p></p><p>Syslog module writes Drupal watchdog logs to the syslog.</p>
+    <div class="panel panel-success">
+      <div class="panel-heading">Passed</div>
+      <div class="panel-body">
+        <p>The Syslog module is currently enabled.</p>
+              </div>
+    </div>
+
+  </div>
+</div>
+<div class="row result-group">
+  <div class="col-sm-12 col-md-10">
+    <span class="navbar-pad"></span><h4 id="Databaseloggingisnotinstalled">Database logging is not installed <small class="label label-">Passed <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></small></h4>
+    <p></p><p>The Drupal core databse logging module can cause database performance issues
+in production. It is recommended to disable and uninstall this module. Use the
+syslog module in its place.</p>
+    <div class="panel panel-success">
+      <div class="panel-heading">Passed</div>
+      <div class="panel-body">
+        <p>The dblog module is not currently enabled.</p>
+              </div>
+    </div>
+
+  </div>
+</div>
+<div class="row result-group">
+  <div class="col-sm-12 col-md-10">
+    <span class="navbar-pad"></span><h4 id="PHPmoduleisnotinstalled">PHP module is not installed <small class="label label-">Passed <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></small></h4>
+    <p></p><p>Enabling this module can cause security and performance issues as it allows
+users to execute PHP code on your site. There are better alternatives out
+there that do not expose such vulnerabilities on your site.</p>
+    <div class="panel panel-success">
+      <div class="panel-heading">Passed</div>
+      <div class="panel-body">
+        <p>The PHP module is not currently enabled.</p>
+              </div>
+    </div>
+
+  </div>
+</div>
+<div class="row result-group">
+  <div class="col-sm-12 col-md-10">
+    <span class="navbar-pad"></span><h4 id="Simpletestmoduleisnotinstalled">Simpletest module is not installed <small class="label label-">Passed <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></small></h4>
+    <p></p><p>The Simpletest module is for testing purposes only and shouldn't be enabled
+in production.</p>
+    <div class="panel panel-success">
+      <div class="panel-heading">Passed</div>
+      <div class="panel-body">
+        <p>The Simpletest module is not currently enabled.</p>
+              </div>
+    </div>
+
+  </div>
+</div>
+<div class="row result-group">
+  <div class="col-sm-12 col-md-10">
+    <span class="navbar-pad"></span><h4 id="ConfigIgnoremoduleenabled">Config Ignore module enabled <small class="label label-">Passed <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></small></h4>
+    <p></p><p>This module ensures configured config items cannot be overwritten.</p>
+    <div class="panel panel-success">
+      <div class="panel-heading">Passed</div>
+      <div class="panel-body">
+        <p>The config_ignore module is currently enabled.</p>
+              </div>
+    </div>
+
+  </div>
+</div>
+<div class="row result-group">
+  <div class="col-sm-12 col-md-10">
+    <span class="navbar-pad"></span><h4 id="Statisticsmoduleisnotinstalled">Statistics module is not installed <small class="label label-">Passed <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></small></h4>
+    <p></p><p>This module comes with Drupal core and attempts to track page view information.
+However as often Drupal uses upstream page cache proxies this module is often
+inccurate and not worth the performance impact it causes.</p>
+    <div class="panel panel-success">
+      <div class="panel-heading">Passed</div>
+      <div class="panel-body">
+        <p>The Statistics module is not currently enabled.</p>
+              </div>
+    </div>
+
+  </div>
+</div>
+<div class="row result-group">
+  <div class="col-sm-12 col-md-10">
+    <span class="navbar-pad"></span><h4 id="Updatemoduleisnotinstalled">Update module is not installed <small class="label label-">Passed <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></small></h4>
+    <p></p><p>The update module fetches the latest module information from Drupal.org and
+reports on the module statuses used on the site.</p>
+    <div class="panel panel-success">
+      <div class="panel-heading">Passed</div>
+      <div class="panel-body">
+        <p>The Update module is not currently enabled.</p>
+              </div>
+    </div>
+
+  </div>
+</div>
+<div class="row result-group">
+  <div class="col-sm-12 col-md-10">
+    <span class="navbar-pad"></span><h4 id="LayoutBuilderisnotinstalled">Layout Builder is not installed <small class="label label-">Passed <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></small></h4>
+    <p></p><p>For the purposes of upgrading to Drupal 8.8.x it is important
+for the GovCMS team to be aware of any and all sites which are
+using this module. This policy will be removed from the profile
+later, however as an interim solution this will show data to
+the team in the dashboard for visibility.</p>
+    <div class="panel panel-success">
+      <div class="panel-heading">Passed</div>
+      <div class="panel-body">
+        <p>The layout_builder module is not currently enabled.</p>
+              </div>
+    </div>
+
+  </div>
+</div>
+<div class="row result-group">
+  <div class="col-sm-12 col-md-10">
+    <span class="navbar-pad"></span><h4 id="Anonymoussessions">Anonymous sessions <small class="label label-">Passed <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></small></h4>
+    <p></p><p>If you are generating sessions for anonymous users, you are causing a major
+performance impact to your site. Having anonymous sessions will break
+traditional page caching in Varnish and CDNs.</p>
+    <div class="panel panel-success">
+      <div class="panel-heading">Passed</div>
+      <div class="panel-body">
+        <p>There are no anonymous sessions.</p>
+              </div>
+    </div>
+
+  </div>
+</div>
+<div class="row result-group">
+  <div class="col-sm-12 col-md-10">
+    <span class="navbar-pad"></span><h4 id="Userregistrationavailabletoadministratorsonly">User registration available to administrators only <small class="label label-">Passed <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></small></h4>
+    <p></p><p>Anonymous sites should have user registration set to off to prevent spam
+registrations</p>
+    <div class="panel panel-success">
+      <div class="panel-heading">Passed</div>
+      <div class="panel-body">
+        <p>User registration is restricted to administrators only.</p>
+              </div>
+    </div>
+
+  </div>
+</div>
+<div class="row result-group">
+  <div class="col-sm-12 col-md-10">
+    <span class="navbar-pad"></span><h4 id="Useradministrationaccountsecurityvalidation">User administration account security validation <small class="label label-">Passed <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></small></h4>
+    <p></p><p>Idetify if any users or roles have the is_admin property set to true</p>
+    <div class="panel panel-success">
+      <div class="panel-heading">Passed</div>
+      <div class="panel-body">
+        <p>The insecure property is set correctly.</p>
+              </div>
+    </div>
+
+  </div>
+</div>
+<div class="row result-group">
+  <div class="col-sm-12 col-md-10">
+    <span class="navbar-pad"></span><h4 id="Drupalusersincertainroles">Drupal users in certain roles <small class="label label-">Passed <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></small></h4>
+    <p></p><p>Check if users are in role groups configured, to allow
+administrators to have visibility of superseded or
+privlidged user roles, and to provide a way to report
+on this.</p>
+    <div class="panel panel-success">
+      <div class="panel-heading">Passed</div>
+      <div class="panel-body">
+        <p>No users belong to the configured user roles.</p>
+              </div>
+    </div>
+
+  </div>
+</div>
+<div class="row result-group">
+  <div class="col-sm-12 col-md-10">
+    <span class="navbar-pad"></span><h4 id="BlackListPermissions">BlackList Permissions <small class="label label-">Passed <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></small></h4>
+    <p></p><p>Checks to ensure roles do not contain blacklisted permissions.</p>
+    <div class="panel panel-success">
+      <div class="panel-heading">Passed</div>
+      <div class="panel-body">
+        <p>No blacklisted permissions were found in use.</p>
+              </div>
+    </div>
+
+  </div>
+</div>
+<div class="row result-group">
+  <div class="col-sm-12 col-md-10">
+    <span class="navbar-pad"></span><h4 id="Databaseupdates">Database updates <small class="label label-">Passed <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></small></h4>
+    <p></p><p>Updates to Drupal core or contrib modules sometimes include important database
+changes which should be applied after the code updates have been deployed.</p>
+    <div class="panel panel-success">
+      <div class="panel-heading">Passed</div>
+      <div class="panel-body">
+        <p>No database updates required.</p>
+              </div>
+    </div>
+
+  </div>
+</div>
+<div class="row result-group">
+  <div class="col-sm-12 col-md-10">
+    <span class="navbar-pad"></span><h4 id="Databasesize">Database size <small class="label label-">Passed <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></small></h4>
+    <p></p><p>Large databases can negatively impact your production site, and slow down
+things like database dumps. The size reported is the data and index size
+combined.</p>
+    <div class="panel panel-success">
+      <div class="panel-heading">Passed</div>
+      <div class="panel-body">
+        <p>The size of the database  <code>drupal</code> is less than 1000MB, currently <strong>33.3 MB</strong>.</p>
+              </div>
+    </div>
+
+  </div>
+</div>
+<div class="row result-group">
+  <div class="col-sm-12 col-md-10">
+    <span class="navbar-pad"></span><h4 id="Largepublicfiles">Large public files <small class="label label-">Passed <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></small></h4>
+    <p></p><p>Large static assets should ideally be housed in other services, e.g.
+Amazon S3 (for files) or Youtube (for videos).</p>
+    <div class="panel panel-success">
+      <div class="panel-heading">Passed</div>
+      <div class="panel-body">
+        <p>No large public files found.</p>
+              </div>
+    </div>
+
+  </div>
+</div>
+<div class="row result-group">
+  <div class="col-sm-12 col-md-10">
+    <span class="navbar-pad"></span><h4 id="LargeDrupalFiles">Large Drupal Files <small class="label label-">Passed <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></small></h4>
+    <p></p><p>Large static assets should be optimized for online display or ideally be housed in other services, e.g.
+Amazon S3 (for files) or Youtube (for videos). Storing large files can consume storage volumes,
+increase page load time and contribute to a higher than desired cache eviction rate. Varnish, on Acquia Cloud,
+does not cache files larger than 10 MB.</p>
+<p>This policy identifies files managed by Drupal that are larger than 20 MB.</p>
+    <div class="panel panel-success">
+      <div class="panel-heading">Passed</div>
+      <div class="panel-body">
+        <p>No large files found.</p>
+              </div>
+    </div>
+
+  </div>
+</div>
+<div class="row result-group">
+  <div class="col-sm-12 col-md-10">
+    <span class="navbar-pad"></span><h4 id="Sensitivepublicfiles">Sensitive public files <small class="label label-">Passed <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></small></h4>
+    <p></p><p>Certain file extensions should never be in public files for security reasons.</p>
+    <div class="panel panel-success">
+      <div class="panel-heading">Passed</div>
+      <div class="panel-body">
+        <p>No sensitive public files found.</p>
+              </div>
+    </div>
+
+  </div>
+</div>
+<div class="row result-group">
+  <div class="col-sm-12 col-md-10">
+    <span class="navbar-pad"></span><h4 id="LargeDrupalFilesmatchingtype">Large Drupal Files matching type <small class="label label-">Passed <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></small></h4>
+    <p></p><p>Large static assets should be optimized for online display or ideally be housed in other services, e.g.
+Amazon S3 (for files) or Youtube (for videos). Storing large files can consume storage volumes,
+increase page load time and contribute to a higher than desired cache eviction rate. Varnish, on Acquia Cloud,
+does not cache files larger than 10 MB.</p>
+<p>This extends on the LargeDrupalFiles policy/audit provided by Drutiny and adds an extension check when the
+extensions parameter is provided.</p>
+<p>This policy identifies files managed by Drupal that are larger than 1.91 MB.</p>
+    <div class="panel panel-success">
+      <div class="panel-heading">Passed</div>
+      <div class="panel-body">
+        <p>No large files found with matching extensions.</p>
+              </div>
+    </div>
+
+  </div>
+</div>
+<div class="row result-group">
+  <div class="col-sm-12 col-md-10">
+    <span class="navbar-pad"></span><h4 id="LintPHPfilesinTheme">Lint PHP files in Theme <small class="label label-">Passed <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></small></h4>
+    <p></p><p>Ensure all PHP files in the theme pass basic PHP syntax parsing.</p>
+    <div class="panel panel-success">
+      <div class="panel-heading">Passed</div>
+      <div class="panel-body">
+        <p>No PHP parse errors found in the theme.</p>
+              </div>
+    </div>
+
+  </div>
+</div>
+<div class="row result-group">
+  <div class="col-sm-12 col-md-10">
+    <span class="navbar-pad"></span><h4 id="DrupalThemeDirectorySize">Drupal Theme Directory Size <small class="label label-">Passed <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></small></h4>
+    <p></p><p>Large theme directories can be indicative of best practice violations:</p>
+<ul>
+<li>Source files in site artifact. e.g. node_modules</li>
+<li>Media assets unsuitable for web delivery</li>
+</ul>
+    <div class="panel panel-success">
+      <div class="panel-heading">Passed</div>
+      <div class="panel-body">
+        <p>The size of the theme directory <code>/app/web/themes/custom/</code> is less than 50 MB, currently <strong>3 MB</strong>.</p>
+              </div>
+    </div>
+
+  </div>
+</div>
+<div class="row result-group">
+  <div class="col-sm-12 col-md-10">
+    <span class="navbar-pad"></span><h4 id="DrupalThemeSecurityPerformance">Drupal Theme Security &amp; Performance <small class="label label-">Passed <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></small></h4>
+    <p></p><p>Some basic checks to ensure that the theme is not doing any seriously bad
+things. Note this is not supposed to be perfect, but used as an aid in
+code review.</p>
+    <div class="panel panel-success">
+      <div class="panel-heading">Passed</div>
+      <div class="panel-body">
+        <p>No security issues found.</p>
+              </div>
+    </div>
+
+  </div>
+</div>
+      </section>
+    
+  </div>
+  <hr>
+</div> <!-- /container -->
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+<script type="text/javascript">
+  (function ($, c) {
+    function formatDate(date) {
+    var hours = date.getHours();
+    var minutes = date.getMinutes();
+    var ampm = hours >= 12 ? 'pm' : 'am';
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    minutes = minutes < 10 ? '0'+minutes : minutes;
+    var strTime = hours + ':' + minutes + ' ' + ampm;
+
+    var yyyy = date.getFullYear(),
+        mm   = ((date.getMonth()+1)+"").padStart(2, '0'),
+        dd   = (date.getDate()+"").padStart(2, '0');
+
+    return yyyy + "-" + mm + "-" + dd + " " + strTime;
+  }
+
+    function getPieishConfig(data, series, table) {
+      var config = {
+        data: {},
+        type: data.chartType,
+        options: {}
+      };
+
+      // Labels == X-Axis labels.
+      config.data.labels = $.map($(data.chartLabels, table), function (e) {
+        return $(e).text();
+      });
+
+      config.data.datasets = $.map(series, function (s, i) {
+        var set = $.map($(s, table), function (e) {
+          return $(e).text().replace(',', '');
+        });
+        return {
+          data: set,
+          backgroundColor: data.chartColors
+        }
+      });
+
+      if (data.chartTitle) {
+        config.options.title = {
+          display: true,
+          text: data.chartTitle
+        };
+      }
+
+      if (data.chartLegend) {
+        config.options.legend = {};
+        if (data.chartLegend == "none") {
+          config.options.legend.display = false;
+        }
+        else {
+          config.options.legend.position = data.chartLegend;
+        }
+      }
+
+      return config;
+    }
+
+    function getBarLineConfig(data, series, table) {
+      var config = {
+        data: {},
+        type: data.chartType,
+        options: {
+          scales: {
+            xAxes: [],
+            yAxes: []
+          }
+        }
+      };
+
+      // Labels == X-Axis labels.
+      config.data.labels = $.map($(data.chartLabels, table), function (e) {
+        var label = $(e).text();
+        if (d = Date.parse(label)) {
+          label = formatDate(new Date(d));
+        }
+        return label;
+      });
+
+      var series_labels = [];
+      if (data.chartSeriesLabels) {
+        series_labels = data.chartSeriesLabels.split(',');
+      }
+
+      config.data.datasets = $.map(series, function (s, i) {
+
+        // Derive a set of numbers.
+        var set = $.map($(s, table), function (e) {
+          return $(e).text().replace(',', '');
+        });
+
+        // For bar/line graphs, if there is only one series, we should use
+        // one color unless there are enough colors available for each
+        // value in the set.
+        var bgColor = set.length <= data.chartColors.length || series.length > 1 ? data.chartColors[i] : data.chartColors[0];
+
+        var label = {
+          data: set,
+          label: $(series_labels[i], table).text()
+        }
+
+        if (config.type == 'line') {
+          label.borderColor = bgColor;
+          label.backgroundColor = 'rgb(0,0,0,0)';
+          label.pointRadius = 0;
+        }
+        else {
+          label.backgroundColor = bgColor;
+        }
+
+        return label;
+      });
+
+      // Axis labels and gridlines for bar/line type graphs.
+      var xAxis = {};
+      var yAxis = {};
+
+      if (data.chartStacked) {
+        xAxis.stacked = true;
+        yAxis.stacked = true;
+      }
+      if (data.chartXAxis) {
+        xAxis.scaleLabel = {
+          labelString: data.chartXAxis,
+          display: true
+        }
+      }
+      if (data.chartYAxis) {
+        yAxis.scaleLabel = {
+          labelString: data.chartYAxis,
+          display: true
+        }
+      }
+
+      config.options.scales.xAxes.push(xAxis);
+      config.options.scales.yAxes.push(yAxis);
+
+      if (data.chartTitle) {
+        config.options.title = {
+          display: true,
+          text: data.chartTitle
+        };
+      }
+
+      if (data.chartLegend) {
+        config.options.legend = {};
+        if (data.chartLegend == "none") {
+          config.options.legend.display = false;
+        }
+        else {
+          config.options.legend.position = data.chartLegend;
+        }
+      }
+      return config;
+    }
+
+
+    // Series colors.
+    var colors = [
+      'rgba(26, 188, 156,1.0)',
+      'rgba(46, 204, 113,1.0)',
+      'rgba(52, 152, 219,1.0)',
+      'rgba(155, 89, 182,1.0)',
+      'rgba(52, 73, 94,1.0)',
+      'rgba(241, 196, 15,1.0)',
+      'rgba(230, 126, 34,1.0)',
+      'rgba(231, 76, 60,1.0)',
+      'rgba(236, 240, 241,1.0)',
+      'rgba(149, 165, 166,1.0)',
+      'rgba(22, 160, 133,1.0)',
+      'rgba(39, 174, 96,1.0)',
+      'rgba(41, 128, 185,1.0)',
+      'rgba(142, 68, 173,1.0)',
+      'rgba(44, 62, 80,1.0)',
+      'rgba(243, 156, 18,1.0)',
+      'rgba(211, 84, 0,1.0)',
+      'rgba(192, 57, 43,1.0)',
+      'rgba(189, 195, 199,1.0)',
+      'rgba(127, 140, 141,1.0)'
+    ];
+    Chart.defaults.global.legend.position = 'right';
+    Chart.defaults.global.title.display = true;
+
+    $('.chart-unprocessed').each(function () {
+
+      var data = $.extend({
+        chartSeries: '',
+        chartLabels: '',
+        chartSeriesLabels: false,
+        chartType: 'bar',
+        chartStacked: false,
+        chartTitle: '',
+        chartWidth: '100%',
+        chartHeight: '100%',
+        chartColors: '',
+        chartTableIndex: 0
+      }, $(this).data());
+
+      var pieish = ['pie', 'doughnut'].indexOf(data.chartType) > 0;
+
+      // Build color palette.
+      // Change the delimiter from a comma to a semi colon 
+      data.chartColors = data.chartColors.replace(/\),/g, ');');
+
+      // Merge the various color palette lists together
+      data.chartColors = $.merge(data.chartColors.split(';'), $.merge(c, colors))
+          .filter(function (i) {
+            return i.length;
+          });
+
+      if (data.chartBootstrapColumns != undefined) {
+        $(this).addClass('col-sm-' + data.chartBootstrapColumns);
+      }
+      else {
+        $('canvas', this).css({
+          width: data.chartWidth,
+          height: data.chartHeight
+        })
+      }
+
+      $(this).html('<canvas></canvas>');
+      $('canvas', this).css('height', data.chartHeight);
+
+      var ctx = $('canvas', this).get(0).getContext('2d');
+      var series = data.chartSeries.split(',');
+      var table = $(this).siblings('table').get(data.chartTableIndex);
+
+      if (pieish) {
+        new Chart(ctx, getPieishConfig(data, series, table));
+      }
+      else {
+        new Chart(ctx, getBarLineConfig(data, series, table));
+      }
+      $(this).removeClass('chart-unprocessed').addClass('chart');
+
+      if ((data.chartHideTable !== undefined) && data.chartHideTable) {
+        $(table).hide();
+      }
+    });
+
+  })(jQuery, window.chartColors || []);
+</script>
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-120749223-1', 'auto');
+ga('set', 'checkProtocolTask', null);
+ga('set', 'validationTask	', null);
+ga('set', 'checkStorageTask', null);
+ga('send', 'pageview', '/profile/d8-full/default', {
+  title: 'Drupal 8 Full Audit - default'
+});
+</script>
+<!-- End Google Analytics -->
+
+</body>
+</html>

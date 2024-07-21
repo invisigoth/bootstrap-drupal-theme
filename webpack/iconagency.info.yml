@@ -1,0 +1,24 @@
+name: IconAgency
+type: theme
+description: 'IconAgency Drupal theme'
+core_version_requirement: ^9 || ^10
+base theme: bootstrap_barrio
+
+# Copy of the bario info.yml, add and remove as you need.
+regions:
+  header: Header
+  primary_menu: 'Primary menu'
+  banner: Banner
+  highlighted: Highlighted
+  content: Content
+  sidebar_first: 'Sidebar first'
+  sidebar_second: 'Sidebar second'
+  footer: 'Footer'
+  hidden: 'Hidden'
+
+# Remove theme css, we load dev/dist in iconagency.theme.
+libraries-override:
+  bootstrap_barrio/global-styling: false
+
+ckeditor_stylesheets:
+  - build/dist/css/editor.css

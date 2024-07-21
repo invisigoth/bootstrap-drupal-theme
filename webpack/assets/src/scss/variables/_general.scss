@@ -1,0 +1,8 @@
+$curve-size-xs: $spacer * .25;
+$curve-size-sm: $spacer * .5;
+$curve-size-md: $spacer;
+$curve-size-lg: $spacer * 2;
+$curve-size-xl: $spacer * 4;
+
+$section_padding: clamp(1rem, 6vw, 5rem);
+$section_half_padding: clamp(.5rem, 3vw, 2.5rem);

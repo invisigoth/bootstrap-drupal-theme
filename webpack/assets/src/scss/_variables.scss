@@ -1,0 +1,16 @@
+// IconAgency _variables.scss
+$enable-smooth-scroll: false;
+$enable-rounded: false;
+$enable-shadows: false;
+
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/mixins';
+
+// Begin custom variables.
+@import 'variables/**/*.scss';
+// End custom variables.
+
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/utilities';
+@import '~bootstrap/scss/buttons';
+

@@ -1,0 +1,26 @@
+.paragraph--type-checklist-wysiwyg {
+  padding-left: 50px;
+  position: relative;
+
+  &.checklist-cross {
+    background-color: var(--bs-light-grey);
+    padding: $spacer $spacer $spacer 50px;
+
+    &:before {
+      background-image: url(../images/cross.svg);
+      top: calc($spacer + .1em);
+    }
+  }
+
+  &:before {
+    background: url(../images/check.svg) no-repeat center top;
+    background-size: $spacer * 1.75;
+    content: '';
+    display: inline-block;
+    height: $spacer * 1.75;
+    left: 10px;
+    position: absolute;
+    top: .1em;
+    width: $spacer * 1.75;
+  }
+}

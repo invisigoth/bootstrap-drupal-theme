@@ -1,0 +1,324 @@
+.webform-wrapper {
+  border: 1px solid var(--bs-grey-lighter);
+  border-radius: $curve-size-md;
+  padding: ($spacer * 3) $spacer;
+}
+
+.webform-submission-form {
+  margin-left: -$grid-gutter-width * .5;
+  margin-right: -$grid-gutter-width * .5;
+
+  .form-inner-wrapper {
+    padding-left: $grid-gutter-width * .5;
+    padding-right: $grid-gutter-width * .5;
+
+    @for $i from 2 through 6 {
+      h#{$i} {
+        font-weight: normal;
+      }
+    }
+
+    h2 {
+      font-size: $font-size-base * 1.75;
+    }
+
+    h3 {
+      font-size: $font-size-base * 1.25;
+    }
+
+
+
+    label,
+    legend {
+      font-size: $font-size-base * 1.25;
+      position: relative;
+    }
+  }
+
+  .form-type-select {
+    margin-top: .5rem;
+  }
+
+  .form-inner-wrapper {
+    border: 1px solid var(--bs-grey-lighter);
+    border-radius: $curve-size-md;
+  }
+
+  .form-item-form-info,
+  .form-item-steps-description,
+  .webform-element-description,
+  .description {
+    color: rgba($primary, .7);
+    font-size: $font-size-base * .875;
+    margin-bottom: $spacer * .75;
+  }
+
+  .form-item-form-info,
+  .form-item-steps-description {
+    text-align: right;
+  }
+
+  .form-item-form-info {
+    margin-bottom: $spacer * 2;
+    padding: ($spacer * 2) 0;
+    position: relative;
+
+    &::before {
+      background: var(--bs-light-grey);
+      border-radius: 6px;
+      content: '';
+      display: block;
+      height: 6px;
+      left: 0;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+    }
+  }
+
+  .form-item-steps-description {
+    margin-bottom: 0;
+    margin-top: $spacer;
+  }
+
+  .webform-element-help-container--title {
+    label {
+      display: block;
+      position: relative;
+    }
+  }
+
+  .tippy-box {
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
+    border-color: var(--bs-primary);
+    border-radius: $curve-size-xs;
+    font-size: $font-size-base * .875;
+    max-width: 250px !important;
+    text-align: center;
+  }
+
+  .tippy-content {
+    padding: $spacer;
+  }
+
+  .webform-element-help {
+    background-color: var(--bs-grey-lighter);
+    border-color: var(--bs-grey-lighter);
+    font-size: $font-size-base;
+    transition: background-color .3s ease, border-color .3s ease;
+
+    &:hover {
+      background-color: var(--bs-primary);
+      border-color: var(--bs-primary);
+    }
+  }
+
+  .btn.webform-button--previous {
+    background: url(../images/arrow-left-light.svg) no-repeat ($spacer * .75) center;
+    background-size: 1.6em;
+    padding-left: $spacer * 2.75;
+
+    &:hover {
+      background-color: rgba($secondary, .8);
+    }
+  }
+
+  .webform-button--submit,
+  .btn.webform-button--next {
+    background: var(--bs-secondary) url(../images/arrow-right-light.svg) no-repeat right ($spacer * .75) center;
+    background-size: 1.6em;
+    margin-left: auto;
+    padding-right: $spacer * 2.75;
+
+    &:hover {
+      background-color: rgba($secondary, .8);
+    }
+  }
+
+  .form-actions {
+    display: flex;
+    margin-top: $spacer * 4;
+    padding-top: $spacer * 2;
+    position: relative;
+
+    &::before {
+      background: var(--bs-light-grey);
+      border-radius: 6px;
+      content: '';
+      display: block;
+      height: 6px;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+  }
+
+  @include media-breakpoint-up(md) {
+    .webform-address--wrapper {
+      > .fieldset-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: -$grid-gutter-width * .5;
+        margin-right: -$grid-gutter-width * .5;
+
+        > * {
+          flex: 1 0 50%;
+          max-width: 50%;
+          padding-left: $grid-gutter-width * .5;
+          padding-right: $grid-gutter-width * .5;
+        }
+      }
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    .form-item-form-info {
+      padding-top: 0;
+    }
+  }
+}
+
+.webform-progress-tracker {
+  margin-top: 0;
+  justify-content: space-between;
+
+  .progress-step {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: $spacer * 2.5;
+    padding-left: $spacer;
+    padding-right: $spacer;
+    position: relative;
+
+    &.is-complete {
+
+
+      .step,
+      .progress-text {
+        opacity: 1;
+      }
+
+      .progress-title {
+        font-weight: normal;
+      }
+
+      .marker {
+        background-color: var(--bs-secondary);
+        border: none;
+        height: 40px;
+        width: 40px;
+
+        svg {
+          display: inline-block;
+
+          .st1,
+          .st0 {
+            fill: var(--bs-secondary);
+          }
+        }
+      }
+
+      .progress-marker {
+        &::after {
+          background-color: var(--bs-secondary);
+        }
+      }
+    }
+
+    &.is-active {
+      .step,
+      .progress-text {
+        opacity: 1;
+      }
+
+      .progress-title {
+        font-weight: normal;
+      }
+
+      .marker {
+        border-color: var(--bs-secondary);
+        height: 50px;
+        width: 50px;
+
+        svg {
+          display: none;
+        }
+
+        &::before {
+          background-color: var(--bs-primary);
+          border-radius: 18px;
+          content: '';
+          display: block;
+          height: 18px;
+          left: 50%;
+          position: absolute;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          width: 18px;
+        }
+      }
+    }
+
+    .step,
+    .progress-text {
+      line-height: 1;
+      opacity: .7;
+      overflow: visible;
+    }
+
+    .step {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .progress-text {
+      padding: 0;
+    }
+
+    .progress-title {
+      color: var(--bs-body-color);
+      font-weight: normal;
+    }
+
+    .progress-marker {
+      align-items: center;
+      display: flex;
+      height: 50px;
+      justify-content: center;
+      left: 0;
+      position: absolute;
+      top: 100%;
+      transform: translateY(-50%);
+      width: 100%;
+
+      &:before {
+        display: none;
+      }
+
+      &:after {
+        background-color: var(--bs-grey-lighter);
+        height: 6px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+
+    .marker {
+      background-color: var(--bs-white);
+      border: 6px solid var(--bs-grey-lighter);
+      border-radius: 50px;
+      display: inline-block;
+      height: 40px;
+      position: relative;
+      width: 40px;
+      z-index: 10;
+
+      svg {
+        display: none;
+      }
+    }
+  }
+}

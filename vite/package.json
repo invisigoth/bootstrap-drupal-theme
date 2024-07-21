@@ -1,0 +1,40 @@
+{
+  "name": "iconagency",
+  "private": true,
+  "version": "0.0.3",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.1.1",
+    "@fortawesome/pro-light-svg-icons": "^6.1.1",
+    "@fortawesome/pro-solid-svg-icons": "^6.1.1",
+    "accessible-submenu": "^1.0.2",
+    "bootstrap": "^5.3.2",
+    "hamburgers": "^1.2.1"
+  },
+  "devDependencies": {
+    "@iconagency/eslint-config": "^0.1.4",
+    "@vitejs/plugin-basic-ssl": "^1.0.0",
+    "sass": "^1.69.4",
+    "vite": "^4.5.0",
+    "vite-plugin-eslint": "^1.8.1",
+    "vite-plugin-live-reload": "^3.0.2"
+  },
+  "eslintConfig": {
+    "extends": [
+      "@iconagency/eslint-config/drupal"
+    ],
+    "ignorePatterns": [
+      "vite.config.js"
+    ],
+    "root": true
+  },
+  "stylelint": {
+    "extends": [
+      "@iconagency/eslint-config/style"
+    ]
+  },
+  "prettier": "@iconagency/eslint-config/prettier"
+}

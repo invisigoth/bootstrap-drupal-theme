@@ -1,0 +1,93 @@
+.paragraph--type-testimonials {
+  text-align: center;
+  position: relative;
+
+  .field--name-field-section-content {
+    > .field__label {
+      @include subtitle;
+    }
+  }
+
+  .carousel-controls {
+    padding-top: $section_padding;
+  }
+
+  .carousel-control-btn {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    height: 72px;
+    transition: background-color .3s ease;
+    width: 72px;
+
+    &:hover {
+      background-color: rgba($white, .8);
+    }
+  }
+
+  .carousel-prev {
+    svg {
+      transform: rotate(180deg);
+    }
+  }
+
+  .carousel-indicators {
+    margin: 0;
+
+    button {
+      background-color: var(--bs-primary);
+      border: none;
+      border-radius: 10px;
+      box-shadow: none;
+      height: 10px;
+      margin-left: 5px;
+      margin-right: 5px;
+      opacity: .25;
+      padding: 0;
+      width: 10px;
+
+      &.active {
+        opacity: 1;
+      }
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    .carousel-control-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .carousel-prev {
+      left: $spacer;
+    }
+
+    .carousel-next {
+      right: $spacer;
+    }
+  }
+}
+
+.paragraph--type-testimonial {
+  padding: 0 $spacer;
+
+  .field--name-field-title {
+    font-size: $font-size-base * 1.25;
+    font-weight: 500;
+    line-height: 1.2;
+    margin-bottom: $spacer;
+  }
+
+  .field--name-field-content {
+    margin-bottom: $spacer;
+  }
+
+  @include media-breakpoint-up(lg) {
+    padding: 0 100px;
+
+    .field--name-field-title {
+      font-size: $font-size-base * 2;
+    }
+  }
+}

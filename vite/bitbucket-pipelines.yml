@@ -1,0 +1,12 @@
+image: node:17-alpine
+
+pipelines:
+  branches:
+    10.x:
+      - step:
+          name: Build
+          script:
+            - cp .npmrc.example .npmrc
+            - sed "s/AAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAA/$FONTAWESOME_TOKEN/g" -i .npmrc
+            - npm install
+            - npm run build
